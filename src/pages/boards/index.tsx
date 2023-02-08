@@ -1,5 +1,5 @@
-import ListContainer from '@/components/board/list/ListContainer';
+import BoardList from '@/components/board/list/List.Container';
 
 export default function List() {
-  return <ListContainer />;
+  return <BoardList />;
 }

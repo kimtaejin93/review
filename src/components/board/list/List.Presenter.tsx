@@ -1,13 +1,9 @@
 import { Divider, List, Typography } from 'antd';
 import 'antd/dist/reset.css';
-export default function ListUI() {
-  const data = [
-    'Racing car sprays burning fuel into crowd.',
-    'Japanese princess to wed commoner.',
-    'Australian walks 100km after outback crash.',
-    'Man charged over missing wedding girl.',
-    'Los Angeles battles huge wildfires.',
-  ];
+import { BoardWarp, Title } from './List.Styled';
+import { IBoardListUiProps } from './List.Type';
+export default function ListUI(props: IBoardListUiProps) {
+  const data = props.data?.fetchBoards;
   return (
     <div>
       <Divider orientation='left'>Default Size</Divider>
@@ -18,7 +14,10 @@ export default function ListUI() {
         dataSource={data}
         renderItem={(item) => (
           <List.Item>
-            <Typography.Text mark>[ITEM]</Typography.Text> {item}
+            <BoardWarp id={item._id} onClick={props.onClickBoard}>
+              <Title>{item.title}</Title>
+              <div>{item.writer}</div>
+            </BoardWarp>
           </List.Item>
         )}
       />
