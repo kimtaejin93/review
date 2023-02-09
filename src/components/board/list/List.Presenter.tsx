@@ -1,12 +1,12 @@
 import { Divider, List, Typography } from 'antd';
 import 'antd/dist/reset.css';
-import { BoardWarp, Title } from './List.Styled';
+import * as S from './List.Styled';
 import { IBoardListUiProps } from './List.Type';
 export default function ListUI(props: IBoardListUiProps) {
   const data = props.data?.fetchBoards;
   return (
     <div>
-      <Divider orientation='left'>Default Size</Divider>
+      <Divider orientation='left'>{data ? 'Default Size' : '로딩중'}</Divider>
       <List
         header={<div>Header</div>}
         footer={<div>Footer</div>}
@@ -14,10 +14,10 @@ export default function ListUI(props: IBoardListUiProps) {
         dataSource={data}
         renderItem={(item) => (
           <List.Item>
-            <BoardWarp id={item._id} onClick={props.onClickBoard}>
-              <Title>{item.title}</Title>
+            <S.BoardWarp id={item._id} onClick={props.onClickBoard}>
+              <S.Title>{item.title}</S.Title>
               <div>{item.writer}</div>
-            </BoardWarp>
+            </S.BoardWarp>
           </List.Item>
         )}
       />

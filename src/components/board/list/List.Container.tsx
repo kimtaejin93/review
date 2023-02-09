@@ -10,6 +10,7 @@ import {
 
 export default function BoardList() {
   const router = useRouter();
+
   const { data } = useQuery<Pick<IQuery, 'fetchBoards'>>(FETCH_BOARDS);
   const onClickBoard = (event: MouseEvent<HTMLDivElement>) => {
     router.push(`/boards/${event.currentTarget.id}`);
