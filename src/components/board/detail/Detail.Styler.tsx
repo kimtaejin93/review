@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Board_Warp = styled.div`
   width: 1200px;
-  min-height: 800px;
+
   margin: auto;
   margin-top: 64px;
   padding: 80px 120px;
@@ -42,6 +42,7 @@ export const LikeDisLike = styled.div`
 export const BoardBody_Warp = styled.div`
   flex: 1;
   display: flex;
+  min-height: 800px;
   flex-direction: column;
 `;
 export const Comment_Warp = styled.div`
