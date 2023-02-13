@@ -1,9 +1,7 @@
-import styled from '@emotion/styled';
+import Write from '@/components/board/write/Write.Container';
+
 import React from 'react';
 
-const Title = styled.div`
-  color: red;
-`;
 export default function index() {
-  return <Title>indedddx</Title>;
+  return <Write />;
 }
