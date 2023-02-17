@@ -18,7 +18,7 @@ import { IBoardDetailProps } from './Detail.type';
 import { getDate } from '@/components/commons/Date';
 
 export default function BoardDetailUI(props: IBoardDetailProps) {
-  console.log(props.commentData?.fetchBoardComments);
+  console.log('확인', props.detailData?.fetchBoard.images);
   return (
     <Board_Warp>
       <BoardHead_Warp>
@@ -35,6 +35,13 @@ export default function BoardDetailUI(props: IBoardDetailProps) {
       </BoardHead_Warp>
       <BoardBody_Warp>
         <Contents>{props.detailData?.fetchBoard.contents}</Contents>
+        {props.detailData?.fetchBoard?.images?.[0] ? (
+          <img
+            src={`https://storage.googleapis.com/${props.detailData?.fetchBoard.images[0]}`}
+          />
+        ) : (
+          <></>
+        )}
         <LikeDisLike>
           {props.detailData?.fetchBoard.likeCount}
           {props.detailData?.fetchBoard.dislikeCount}

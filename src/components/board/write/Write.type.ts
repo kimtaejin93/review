@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent, Dispatch } from 'react';
 export interface IBoardWriteProps {
   onChangeInput: (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -10,4 +10,5 @@ export interface IBoardWriteProps {
     passwordCheck: boolean;
     titleCheck: boolean;
   };
+  onChangeInputImage: (url: string) => void;
 }

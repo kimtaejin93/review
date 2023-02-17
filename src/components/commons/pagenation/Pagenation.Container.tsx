@@ -2,7 +2,6 @@ import PageNationUI from './Pagenation.Presenter';
 import { IPageNationProps } from './Pagenation.Type';
 import { MouseEvent, useState } from 'react';
 export default function PageNation(props: IPageNationProps) {
-  const [isActive, setIsActive] = useState(1);
   const onClickPage = (event: MouseEvent<HTMLSpanElement>) => {
     props.setPage(Number(event.currentTarget.id));
   };

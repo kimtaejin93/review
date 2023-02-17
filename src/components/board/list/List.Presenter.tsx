@@ -1,5 +1,5 @@
-import { Divider, List, Typography } from 'antd';
-import 'antd/dist/reset.css';
+import { Divider, List } from 'antd';
+
 import * as S from './List.Styled';
 import { IBoardListUiProps } from './List.Type';
 export default function ListUI(props: IBoardListUiProps) {

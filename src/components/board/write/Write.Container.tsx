@@ -13,13 +13,18 @@ export default function Write() {
     title: '',
     contents: '',
   });
-  let temp = false;
+  const [boardInputImageUrl, setBoardInputImageUrl] = useState<string[]>([]);
+  const onChangeInputImage = (url: string) => {
+    setBoardInputImageUrl([url]);
+  };
+  console.log('boardInputImageUrl', boardInputImageUrl);
+
   const [dataNullCheck, setDataNullCheck] = useState({
-    writerCheck: false,
-    passwordCheck: false,
-    titleCheck: false,
+    writerCheck: true,
+    passwordCheck: true,
+    titleCheck: true,
   });
-  console.log(dataNullCheck);
+
   const onChangeInput = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -51,10 +56,9 @@ export default function Write() {
     console.log('dataNullResult', dataNullResult);
     if (
       !(
-        dataNullCheck.writerCheck &&
-        dataNullCheck.passwordCheck &&
-        dataNullCheck.titleCheck &&
-        temp
+        boardInputData.writer &&
+        boardInputData.title &&
+        boardInputData.password
       )
     )
       return;
@@ -65,6 +69,7 @@ export default function Write() {
           password: boardInputData.password,
           title: boardInputData.title,
           contents: boardInputData.contents,
+          images: boardInputImageUrl,
         },
       },
     });
@@ -77,13 +82,14 @@ export default function Write() {
       return;
     }
   };
-  console.log(dataNullCheck);
+  console.log(boardInputData);
   return (
     <WriteUI
       onChangeInput={onChangeInput}
       onClickWrite={onClickWrite}
       onClickCancel={onClickCancel}
       dataNullCheck={dataNullCheck}
+      onChangeInputImage={onChangeInputImage}
     />
   );
 }

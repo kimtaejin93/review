@@ -1,3 +1,4 @@
+import ImageUpload from '@/components/commons/imageUpload/ImageUploader';
 import * as S from './Write.Styler';
 import { IBoardWriteProps } from './Write.type';
 export default function WriteUI(props: IBoardWriteProps) {
@@ -56,6 +57,7 @@ export default function WriteUI(props: IBoardWriteProps) {
           onChange={props.onChangeInput}
         />
       </S.Contents>
+      <ImageUpload onChangeInputImage={props.onChangeInputImage} />
       <S.Button_Warp>
         <S.Button_style onClick={props.onClickWrite}>작성하기</S.Button_style>
         <S.Button_style onClick={props.onClickCancel}>취소하기</S.Button_style>
