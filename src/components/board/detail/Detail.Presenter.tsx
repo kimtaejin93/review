@@ -16,6 +16,7 @@ import {
 
 import { IBoardDetailProps } from './Detail.type';
 import { getDate } from '@/components/commons/Date';
+import CommentWrite from '../comment/CommentWrite';
 
 export default function BoardDetailUI(props: IBoardDetailProps) {
   console.log('확인', props.detailData?.fetchBoard.images);
@@ -47,17 +48,7 @@ export default function BoardDetailUI(props: IBoardDetailProps) {
           {props.detailData?.fetchBoard.dislikeCount}
         </LikeDisLike>
       </BoardBody_Warp>
-      <Comment_Warp>
-        <>
-          <CommentTitle>COMMENT</CommentTitle>
-          {props.commentData?.fetchBoardComments.map((el) => (
-            <Comment key={el._id}>
-              <CommentWriter>{el.writer || '이름없음'}</CommentWriter>
-              <div>{el.contents}</div>
-            </Comment>
-          ))}
-        </>
-      </Comment_Warp>
+      <CommentWrite />
     </Board_Warp>
   );
 }
