@@ -54,6 +54,10 @@ export default function CommentWrite() {
     setInputData({ ...inputData, [event.target.id]: event.target.value });
   };
   const onClickCommentWrite = async () => {
+    if (!(inputData.writer && inputData.password && inputData.contents)) {
+      window.alert('작성자,비밀번호,내용을 모두 작성해주세요.');
+      return;
+    }
     try {
       const result = await createBoardComment({
         variables: {
@@ -89,31 +93,35 @@ export default function CommentWrite() {
   return (
     <S.Comment_Warp>
       <S.CommentTitle>COMMENT</S.CommentTitle>
-      <div>
-        <input
-          type='text'
-          placeholder='작성자'
-          onChange={onChangeInput}
-          id='writer'
-          value={inputData.writer}
-        />
-        <input
-          type='password'
-          placeholder='비밀번호'
-          onChange={onChangeInput}
-          id='password'
-          value={inputData.password}
-        />
-      </div>
+      <S.CommentWrite_Wrap>
+        <div>
+          <S.WriterInput
+            type='text'
+            placeholder='작성자'
+            onChange={onChangeInput}
+            id='writer'
+            value={inputData.writer}
+          />
+          <S.PasswordInput
+            type='password'
+            placeholder='비밀번호'
+            onChange={onChangeInput}
+            id='password'
+            value={inputData.password}
+          />
+        </div>
 
-      <textarea
-        placeholder='내용'
-        onChange={onChangeInput}
-        id='contents'
-        value={inputData.contents}
-        style={{ width: '90%' }}
-      />
-      <button onClick={onClickCommentWrite}>작성하기</button>
+        <S.ContentsInput
+          placeholder='내용'
+          onChange={onChangeInput}
+          id='contents'
+          value={inputData.contents}
+        />
+        <S.CommentWriteButton onClick={onClickCommentWrite}>
+          작성하기
+        </S.CommentWriteButton>
+      </S.CommentWrite_Wrap>
+
       {data?.fetchBoardComments?.map(
         (el: {
           writer: string;

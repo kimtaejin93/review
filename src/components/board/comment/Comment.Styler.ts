@@ -29,3 +29,34 @@ export const CommentContent = styled.div`
   margin-top: 10px;
   margin-left: 10px;
 `;
+export const CommentWrite_Wrap = styled.div`
+  padding: 15px;
+  background-color: #fcfbec;
+  border-radius: 30px;
+  position: relative;
+  margin: 20px 0px;
+`;
+
+export const CommentWriteButton = styled.button`
+  height: 120px;
+  position: absolute;
+  right: 20px;
+  bottom: 30px;
+  background-color: rgba(196, 183, 59, 0.5);
+  border: none;
+`;
+export const WriterInput = styled.input`
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+`;
+export const PasswordInput = styled.input`
+  padding: 10px;
+  border-radius: 10px;
+`;
+export const ContentsInput = styled.textarea`
+  margin: 10px;
+  padding: 10px;
+  width: 90%;
+  height: 100px;
+`;
