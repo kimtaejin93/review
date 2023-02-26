@@ -21,7 +21,7 @@ export default function PageNationUI(props: IPageNationUIProps) {
                 onClick={props.onClickPage}
                 activePage={props.page}
               >
-                {index + 1 + props.pageMove}
+                <div>{index + 1 + props.pageMove}</div>
               </PageNumber>
             )
         )}

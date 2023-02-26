@@ -28,6 +28,7 @@ export const BoardArea = styled.div`
   padding: 20px;
   border-top: 2px solid gray;
   border-bottom: 2px solid gray;
+  position: relative;
 `;
 export const SearchInputArea = styled.div`
   display: flex;

@@ -1,3 +1,4 @@
+import MoveButton from '@/components/common/button/MoveButton01';
 import * as S from './List.Styled';
 import { IBoardListUiProps } from './List.Type';
 export default function ListUI(props: IBoardListUiProps) {
@@ -16,6 +17,7 @@ export default function ListUI(props: IBoardListUiProps) {
             <div>{item.writer}</div>
           </S.BoardWarp>
         ))}
+        <MoveButton title='작성하기' router='boards/new' />
       </S.BoardArea>
       <S.SearchInputArea>
         <S.SearchInput

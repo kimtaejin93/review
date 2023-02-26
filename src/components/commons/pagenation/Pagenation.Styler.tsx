@@ -7,6 +7,8 @@ export const PageNumber = styled.div<{ activePage: number; id: string }>`
   font-weight: ${(props) => props.activePage === Number(props.id) && '700'};
   margin: 5px;
   width: 20px;
+  display: flex;
+  justify-content: center;
 `;
 
 export const PageNation_Warp = styled.div`
