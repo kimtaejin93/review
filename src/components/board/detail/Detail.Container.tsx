@@ -3,12 +3,16 @@ import {
   IQueryFetchBoardArgs,
   IQueryFetchBoardCommentsArgs,
 } from '@/commons/types/generated/types';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { json } from 'stream/consumers';
 import BoardDetailUI from './Detail.Presenter';
-import { FETCH_BOARD, FETCH_BOARD_COMMENTS } from './Detail.Query';
+import {
+  DISLIKE_BOARD,
+  FETCH_BOARD,
+  FETCH_BOARD_COMMENTS,
+  LIKE_BOARD,
+} from './Detail.Query';
 
 export default function BoardDetail() {
   const router = useRouter();
@@ -20,6 +24,38 @@ export default function BoardDetail() {
       },
     }
   );
+  const [LikeBoard] = useMutation(LIKE_BOARD);
+  const [disLikeBoard] = useMutation(DISLIKE_BOARD);
+  const onClickLike = async () => {
+    await LikeBoard({
+      variables: {
+        boardId: router.query.boardId,
+      },
+      refetchQueries: [
+        {
+          query: FETCH_BOARD,
+          variables: {
+            boardId: router.query.boardId,
+          },
+        },
+      ],
+    });
+  };
+  const onClickDisLike = () => {
+    disLikeBoard({
+      variables: {
+        boardId: router.query.boardId,
+      },
+      refetchQueries: [
+        {
+          query: FETCH_BOARD,
+          variables: {
+            boardId: router.query.boardId,
+          },
+        },
+      ],
+    });
+  };
   useEffect(() => {
     if (localStorage.getItem('visit') === null) {
       localStorage.setItem(
@@ -43,6 +79,8 @@ export default function BoardDetail() {
   console.log(commentData);
   return (
     <BoardDetailUI
+      onClickLike={onClickLike}
+      onClickDisLike={onClickDisLike}
       detailData={detailData.data}
       commentData={commentData.data}
     />

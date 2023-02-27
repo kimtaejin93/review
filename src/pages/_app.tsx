@@ -1,3 +1,4 @@
+import Banner from '@/components/commons/layout/Banner';
 import '@/styles/globals.css';
 import {
   ApolloClient,
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
   });
   return (
     <ApolloProvider client={client}>
+      <Banner />
       <Component {...pageProps} />
     </ApolloProvider>
   );

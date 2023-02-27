@@ -4,7 +4,7 @@ import { IBoardListUiProps } from './List.Type';
 export default function ListUI(props: IBoardListUiProps) {
   const data = props.data?.fetchBoards;
   return (
-    <div>
+    <S.DetailPage>
       <S.BoardArea>
         <strong>자유게시판</strong>
         {data?.map((item) => (
@@ -13,7 +13,11 @@ export default function ListUI(props: IBoardListUiProps) {
             id={item._id}
             onClick={props.onClickBoard}
           >
-            <S.Title>{item.title}</S.Title>
+            <S.Title>
+              {item.title}
+              {props.visit?.includes(item._id) ? '✔' : ''}
+            </S.Title>
+
             <div>{item.writer}</div>
           </S.BoardWarp>
         ))}
@@ -25,6 +29,6 @@ export default function ListUI(props: IBoardListUiProps) {
           placeholder='검색해보세요'
         />
       </S.SearchInputArea>
-    </div>
+    </S.DetailPage>
   );
 }

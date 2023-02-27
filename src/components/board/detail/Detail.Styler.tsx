@@ -10,7 +10,12 @@ export const Board_Warp = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
+export const UserImages = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+`;
 export const BoardHead_Warp = styled.div`
   padding-bottom: 20px;
   border-bottom: 1px solid gray;
@@ -38,6 +43,17 @@ export const Contents = styled.div`
 `;
 export const LikeDisLike = styled.div`
   text-align: center;
+`;
+export const LikeDisLikeButton = styled.button`
+  height: 100px;
+  width: 100px;
+  background-color: yellow;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  margin: 10px;
+  font-size: 30px;
+  cursor: pointer;
 `;
 export const BoardBody_Warp = styled.div`
   flex: 1;

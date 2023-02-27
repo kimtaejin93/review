@@ -8,10 +8,8 @@ import {
   LikeDisLike,
   BoardBody_Warp,
   Contents,
-  Comment_Warp,
-  CommentTitle,
-  Comment,
-  CommentWriter,
+  UserImages,
+  LikeDisLikeButton,
 } from './Detail.Styler';
 
 import { IBoardDetailProps } from './Detail.type';
@@ -25,7 +23,7 @@ export default function BoardDetailUI(props: IBoardDetailProps) {
       <BoardHead_Warp>
         <Title>{props.detailData?.fetchBoard.title}</Title>
         <WriterInfo>
-          <div>이미지</div>
+          <UserImages src='https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg' />
           <div>
             <Writer>{props.detailData?.fetchBoard.writer}</Writer>
             <CreateAt>
@@ -44,8 +42,14 @@ export default function BoardDetailUI(props: IBoardDetailProps) {
           <></>
         )}
         <LikeDisLike>
-          {props.detailData?.fetchBoard.likeCount}
-          {props.detailData?.fetchBoard.dislikeCount}
+          <LikeDisLikeButton onClick={props.onClickLike}>
+            <div>👍</div>
+            <div>{props.detailData?.fetchBoard.likeCount}</div>
+          </LikeDisLikeButton>
+          <LikeDisLikeButton onClick={props.onClickDisLike}>
+            <div>👎</div>
+            <div>{props.detailData?.fetchBoard.dislikeCount}</div>
+          </LikeDisLikeButton>
         </LikeDisLike>
       </BoardBody_Warp>
       <CommentWrite />

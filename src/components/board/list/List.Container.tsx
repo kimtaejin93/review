@@ -14,7 +14,14 @@ import { debounce } from 'lodash';
 export default function BoardList() {
   const [page, setPage] = useState(1);
   const [keyword, setKeyword] = useState('');
+  const [visit, setVisit] = useState<null | string[]>();
   const router = useRouter();
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('visit')!) !== null) {
+      setVisit(JSON.parse(localStorage.getItem('visit')!));
+      console.log(visit);
+    }
+  }, []);
 
   const { data } = useQuery<Pick<IQuery, 'fetchBoards'>, IQueryFetchBoardsArgs>(
     FETCH_BOARDS,
@@ -40,6 +47,7 @@ export default function BoardList() {
   return (
     <div>
       <ListUI
+        visit={visit}
         data={data}
         onClickBoard={onClickBoard}
         onChangeSearch={onChangeSearch}

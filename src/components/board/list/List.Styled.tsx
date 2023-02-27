@@ -26,11 +26,19 @@ export const SearchInput = styled.input`
 export const BoardArea = styled.div`
   margin-top: 30px;
   padding: 20px;
-  border-top: 2px solid gray;
-  border-bottom: 2px solid gray;
+
   position: relative;
+
+  text-align: center;
+  margin: auto;
 `;
 export const SearchInputArea = styled.div`
   display: flex;
   justify-content: center;
+`;
+export const DetailPage = styled.div`
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 1200px;
+  margin: auto;
+  margin-top: 30px;
 `;
